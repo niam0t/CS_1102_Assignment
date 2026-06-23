@@ -11,6 +11,7 @@ import static program.utils.Utils.println;
 public record QuizData(List<Quiz> quizList) {
 
     public QuizData() {
+        // all the Quiz with answers and options
         this(List.of(
                 new Quiz(
                         "How much is (2 + 2 = ?) :",
@@ -50,6 +51,16 @@ public record QuizData(List<Quiz> quizList) {
                                 4, "Dhaka is not a country"
                         ),
                         4
+                ),
+
+                new Quiz(
+                        "What is ( 1 + 2 = ? ) ?",
+                        Map.of(1, "1.2",
+                                2, "1",
+                                3, "12",
+                                4, "3"
+                        ),
+                        4
                 )
         ));
     }
@@ -64,6 +75,8 @@ public record QuizData(List<Quiz> quizList) {
 
 
     public static void displayQuiz(Quiz quiz, int qNo) {
+        // displays the question
+        // TODO: refactor to a view model
         println("=====================================");
         displayQuestion(quiz.text, qNo);
         displayOptions(quiz.options);
